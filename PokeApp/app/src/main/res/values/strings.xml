@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PokeApp</string>
+    <string name="google">Google</string>
+    <string name="defaul_web_client_id">"238291973877-v8p1cu7pv3to4np19g9b59d1t2p2bs0m.apps.googleusercontent.com"</string>
+</resources>
