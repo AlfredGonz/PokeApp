@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/ghost_white"
+    tools:context=".MainActivity">
 
-    <data>
+    <Button
+        android:id="@+id/googlebutton"
+        android:layout_width="270dp"
+        android:layout_height="49dp"
+        android:backgroundTint="@android:color/white"
+        android:drawableLeft="@mipmap/google"
+        android:elevation="10dp"
+        android:text="@string/google"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/fbbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96" />
 
-    </data>
+    <Button
+        android:id="@+id/fbbutton"
+        android:layout_width="270dp"
+        android:layout_height="46dp"
+        android:backgroundTint="@color/fb_blue"
+        android:drawableLeft="@mipmap/facebook"
+        android:elevation="10dp"
+        android:text="@string/facebook"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/googlebutton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.768" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity"
-        android:id="@+id/authlayout">
-
-        <Button
-            android:id="@+id/googlebutton"
-            android:layout_width="319dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="67dp"
-            android:layout_marginEnd="68dp"
-            android:layout_marginBottom="275dp"
-            android:background="@color/white"
-            android:drawableStart="@mipmap/logo_google"
-            android:text="@string/google"
-            android:textColor="@android:color/background_dark" />
-
-    </RelativeLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>
