@@ -1,13 +1,15 @@
 package com.example.pokeapp.ui
 
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokeapp.R
+import com.example.pokeapp.databinding.RegionListItemBinding
+
+private val TAG = RegionesAdapter::class.java.simpleName
 
 class RegionesAdapter : ListAdapter<Regiones, RegionesAdapter.RgViewHolder>(DiffCallback){
 
@@ -22,18 +24,29 @@ class RegionesAdapter : ListAdapter<Regiones, RegionesAdapter.RgViewHolder>(Diff
 
      }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegionesAdapter.RgViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.region_list_item, parent, false)
+    lateinit var onItemClickListener: (Regiones) -> Unit
 
-        return RgViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegionesAdapter.RgViewHolder {
+        val binding = RegionListItemBinding.inflate(LayoutInflater.from(parent.context))
+        return RgViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: RegionesAdapter.RgViewHolder, position: Int) {
         val region = getItem(position)
-        holder.nombreRegion.text = region.regionname
+        holder.bind(region)
     }
 
-    inner class RgViewHolder(val view: View) : RecyclerView.ViewHolder(view){
-        val nombreRegion = view.findViewById<TextView>(R.id.txt_title)
+    inner class RgViewHolder(private val binding: RegionListItemBinding) :
+            RecyclerView.ViewHolder(binding.root){
+        fun bind(region: Regiones) {
+            binding.txtTitle.text = region.regionname
+            binding.root.setOnClickListener {
+                if (::onItemClickListener.isInitialized) {
+                    onItemClickListener(region)
+                } else {
+                    Log.e(TAG, "onItemClickListener no inicializado")
+                }
+            }
+        }
     }
 }

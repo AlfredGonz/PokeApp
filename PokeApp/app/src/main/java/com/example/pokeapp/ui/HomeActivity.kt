@@ -3,6 +3,8 @@ package com.example.pokeapp.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokeapp.databinding.ActivityHomeBinding
 
@@ -42,6 +44,16 @@ class HomeActivity : AppCompatActivity() {
         val adapter = RegionesAdapter()
         binding.regionesRecycler.adapter = adapter
         adapter.submitList(rList)
+
+        adapter.onItemClickListener = {
+            Toast.makeText(this, it.regionname, Toast.LENGTH_LONG).show()
+        }
+
+        if (rList.isEmpty()){
+            binding.emptyView.visibility = View.VISIBLE
+        } else {
+            binding.emptyView.visibility = View.GONE
+        }
     }
 
     private fun setup(username: String?, provider: String){

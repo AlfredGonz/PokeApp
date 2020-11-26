@@ -9,5 +9,6 @@
     <string name="username">username</string>
     <string name="nombreRegion">Región</string>
     <string name="regiones">Regiones</string>
+    <string name="no_region">No hay regiones para mostrar.</string>
 
 </resources>
