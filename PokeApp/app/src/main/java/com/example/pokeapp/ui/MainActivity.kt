@@ -1,9 +1,10 @@
-package com.example.pokeapp
+package com.example.pokeapp.ui
 
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pokeapp.R
 import com.example.pokeapp.databinding.ActivityMainBinding
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -11,8 +12,6 @@ import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FacebookAuthProvider
@@ -89,7 +88,7 @@ class MainActivity : AppCompatActivity() {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful){
-                            showHome(account.displayName?:"",ProviderType.GOOGLE)
+                            showHome(account.displayName?:"", ProviderType.GOOGLE)
                         } else {
                             showAlert()
                         }
