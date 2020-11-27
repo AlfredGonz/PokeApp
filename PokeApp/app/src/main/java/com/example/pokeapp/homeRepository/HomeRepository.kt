@@ -1,7 +1,5 @@
-package com.example.pokeapp
+package com.example.pokeapp.homeRepository
 
-import com.example.pokeapp.ui.Regiones
-import com.example.pokeapp.ui.service
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

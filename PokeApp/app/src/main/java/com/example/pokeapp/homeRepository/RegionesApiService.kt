@@ -1,6 +1,5 @@
-package com.example.pokeapp.ui
+package com.example.pokeapp.homeRepository
 
-import com.example.pokeapp.RegionesJsonResponse
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET

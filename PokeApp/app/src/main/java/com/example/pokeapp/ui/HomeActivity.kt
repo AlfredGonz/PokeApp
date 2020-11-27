@@ -7,8 +7,10 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokeapp.HomeViewModel
+import com.example.pokeapp.homeRepository.HomeViewModel
 import com.example.pokeapp.databinding.ActivityHomeBinding
+import com.example.pokeapp.homeRepository.Regiones
+import com.example.pokeapp.homeRepository.RegionesAdapter
 
 
 enum class ProviderType {
@@ -34,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
         binding.regionesRecycler.layoutManager = LinearLayoutManager(this)
         val viewModel: HomeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        val adapter = RegionesAdapter()
+        val adapter = RegionesAdapter(this)
         binding.regionesRecycler.adapter = adapter
 
         viewModel.rlist.observe(this, Observer {
