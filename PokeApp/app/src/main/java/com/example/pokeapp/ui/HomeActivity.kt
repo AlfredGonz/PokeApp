@@ -1,11 +1,13 @@
 package com.example.pokeapp.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pokeapp.HomeViewModel
 import com.example.pokeapp.databinding.ActivityHomeBinding
 
 
@@ -30,26 +32,24 @@ class HomeActivity : AppCompatActivity() {
         setup(username ?: "", provider ?: "")
 
         binding.regionesRecycler.layoutManager = LinearLayoutManager(this)
-
-        val rList = mutableListOf<Regiones>()
-        rList.add(Regiones("Kanto"))
-        rList.add(Regiones("Johto"))
-        rList.add(Regiones("Hoenn"))
-        rList.add(Regiones("Sinnoh"))
-        rList.add(Regiones("Unova"))
-        rList.add(Regiones("Kalos"))
-        rList.add(Regiones("Alola"))
-        rList.add(Regiones("Galar"))
+        val viewModel: HomeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         val adapter = RegionesAdapter()
         binding.regionesRecycler.adapter = adapter
-        adapter.submitList(rList)
+
+        viewModel.rlist.observe(this, Observer {
+            rlist-> adapter.submitList(rlist)
+            emptyView(rlist)
+        })
 
         adapter.onItemClickListener = {
             Toast.makeText(this, it.regionname, Toast.LENGTH_LONG).show()
         }
 
-        if (rList.isEmpty()){
+    }
+
+    private fun emptyView(rlist: MutableList<Regiones>) {
+        if (rlist.isEmpty()) {
             binding.emptyView.visibility = View.VISIBLE
         } else {
             binding.emptyView.visibility = View.GONE
