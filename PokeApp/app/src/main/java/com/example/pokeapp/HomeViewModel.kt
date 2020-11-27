@@ -16,34 +16,13 @@ class HomeViewModel : ViewModel(){
     val rlist: LiveData<MutableList<Regiones>>
     get() = _rList
 
+    private val repository = HomeRepository()
     init {
         viewModelScope.launch {
 
-            _rList.value = fetchRegiones()
+            _rList.value = repository.fetchRegiones()
         }
     }
 
-    private suspend fun fetchRegiones() : MutableList<Regiones> {
-        return withContext(Dispatchers.IO){
-            val rgJsonResponse = service.getRegiones()
-            val regionesList = parseRegionesResult(rgJsonResponse)
 
-            regionesList
-        }
-    }
-
-    private fun parseRegionesResult(rgJsonResponse: RegionesJsonResponse): MutableList<Regiones> {
-
-        val regionesList = mutableListOf<Regiones>()
-
-        val resultList = rgJsonResponse.results
-
-        for (result in resultList) {
-            val name = result.name
-
-            regionesList.add(Regiones(name))
-        }
-
-        return regionesList
-    }
 }
