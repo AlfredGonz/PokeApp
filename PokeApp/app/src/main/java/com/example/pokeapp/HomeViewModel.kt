@@ -25,25 +25,23 @@ class HomeViewModel : ViewModel(){
 
     private suspend fun fetchRegiones() : MutableList<Regiones> {
         return withContext(Dispatchers.IO){
-            val rgListString = service.getRegiones()
-            val regionesList = parseRegionesResult(rgListString)
-            
+            val rgJsonResponse = service.getRegiones()
+            val regionesList = parseRegionesResult(rgJsonResponse)
+
             regionesList
         }
     }
 
-    private fun parseRegionesResult(rgListString: String): MutableList<Regiones> {
-        val rgJsonObject = JSONObject(rgListString)
-        val resultJsonArray = rgJsonObject.getJSONArray("results")
+    private fun parseRegionesResult(rgJsonResponse: RegionesJsonResponse): MutableList<Regiones> {
 
         val regionesList = mutableListOf<Regiones>()
 
-        for (i in 0 until resultJsonArray.length()) {
-            val resultJsonObject = resultJsonArray[i] as JSONObject
-            val nombre = resultJsonObject.getString("name")
+        val resultList = rgJsonResponse.results
 
-            val region = Regiones(nombre)
-            regionesList.add(region)
+        for (result in resultList) {
+            val name = result.name
+
+            regionesList.add(Regiones(name))
         }
 
         return regionesList
