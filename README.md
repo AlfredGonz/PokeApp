@@ -6,7 +6,7 @@ App para Android desarrollada en Kotlin, utilizando la PokeApi para obtener las 
 
 A continuación se muestra la idea de como se desarrollará la interfaz de la aplicación.
 En caso que las imagenes no se muestren en el README, puede verlas presionando el siguiente enlace:
-[Mockups Pantallas App](https://drive.google.com/file/d/1vIkQt8iqccoXCjF9ajsatUT415qrr-OO/view?usp=sharing)
+[Mockups Screens App](https://drive.google.com/drive/folders/1viJ1FLbXoE2uBGt-flwv8mGPYK8DB1G4?usp=sharing)
 
 ### Pantalla de Login
 Al ingresar a la app, esta sería la primer pantalla que se mostrará al usuario, donde podrá iniciar sesión por medio de una cuenta Google o una cuenta Facebook.
