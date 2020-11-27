@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokeapp.homeRepository.HomeViewModel
 import com.example.pokeapp.databinding.ActivityHomeBinding
-import com.example.pokeapp.homeRepository.Regiones
+import com.example.pokeapp.models.Regiones
 import com.example.pokeapp.homeRepository.RegionesAdapter
 
 

@@ -1,5 +1,6 @@
 package com.example.pokeapp.homeRepository
 
+import com.example.pokeapp.models.Regiones
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
