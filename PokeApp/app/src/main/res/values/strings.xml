@@ -11,5 +11,9 @@
     <string name="regiones">Regiones</string>
     <string name="no_region">No hay regiones para mostrar.</string>
     <string name="appname">Poke App</string>
+    <string name="pokemons">Pokemons</string>
+    <string name="vermas">Ver más</string>
+    <string name="nombre_pokemon">Pikachu</string>
+    <string name="equipos">Equipos</string>
 
 </resources>
